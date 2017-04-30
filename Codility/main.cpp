@@ -10,10 +10,11 @@
  *
  * Created on 2017年4月28日, 下午10:13
  */
-
+#include <stdio.h>      /* printf */
+#include <stdlib.h>     /* abs */
 #include <iostream>
 #include <vector>
-
+#include <cmath>
 using namespace std;
 
 
@@ -55,7 +56,20 @@ int Tape_Equilibrium(vector<int> &A) {
     return r;  
 }  
 
-
+// Binary-gap: find longest binary gap, example: 1000101 -> return 3; O(log N) time
+int binary_gap(int N) {  
+    // write your code here...  
+    int i,r, last;  
+    for (i = r = 0, last = -1; N; N >>= 1,++i) {  
+        if (N & 1) {  
+            if (last >= 0) {  
+                r = max(i - last - 1, r);  
+            }  
+            last = i;  
+        }  
+    }  
+    return r;  
+}  
 
 };
 
@@ -78,7 +92,8 @@ int main(int argc, char* argv[]) {
     //[1, 2, 5, 4]
     z = solution.Missing_elem(input) ;
     cout <<  z << endl; 
-
+     z = solution.binary_gap(x) ;
+    cout <<  z << endl;    
     return 0;
 }
 
