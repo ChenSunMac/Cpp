@@ -71,6 +71,44 @@ int binary_gap(int N) {
     return r;  
 }  
 
+// Dominator: return the index of the dominator (a number that appears in the list more than 50% of the time) and if there is not, return -1;
+int Dominator(const vector<int> &A) {  
+    // write your code here...  
+    int r, i , t, n = A.size();  
+    for (i = r = t = 0; i < n; ++i) {  
+        if (A[i] == A[r]) {  
+            ++t;  
+        }  
+        else if (--t < 0) {  
+            t = 1;  
+            r = i;  
+        }  
+    }  
+    for (i = n - 1, n >>= 1; i >= 0; --i) {  
+        if ((A[i] == A[r]) && (--n < 0)) {  
+            return r;  
+        }  
+    }  
+    return -1;  
+}  
+
+
+// Max-profit: Given stock, determine when buy and sell will maximize the profit
+int Max_profit(const vector<int> &A) {  
+    // write your code here...  
+    int n = A.size(), i, profit, cheapest;  
+    for (i = profit = cheapest = 0; i < n; ++i) {  
+        if (A[i] < A[cheapest]) {  
+            cheapest = i;  
+        }  
+        profit = max(profit, A[i] - A[cheapest]);  
+    }  
+    return profit;  
+}  
+
+
+
+
 };
 
 /*
