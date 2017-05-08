@@ -14,18 +14,35 @@ namespace Consignment_Shop_UI
     public partial class Consignment_Shop : Form
     {
         private Store store = new Store();
+        private List<Item> shoppingCartData = new List<Item>();
         BindingSource itemsBinding = new BindingSource();
+        BindingSource cartBinding = new BindingSource();
+        BindingSource vendersBinding = new BindingSource();
+
 
         public Consignment_Shop()
         {
             InitializeComponent();
             SetupData();
-
-            itemsBinding.DataSource = store.Items;
+            // where statement works like a filter here, item in where is like in the foreach statement
+            itemsBinding.DataSource = store.Items.Where(item => item.Sold == false).ToList();
             ItemListBox.DataSource = itemsBinding;
 
             ItemListBox.DisplayMember = "Display";
             ItemListBox.ValueMember = "Display";
+
+            cartBinding.DataSource = shoppingCartData;
+            ShoppingCartListBox.DataSource = cartBinding;
+
+            ShoppingCartListBox.DisplayMember = "Display";
+            ShoppingCartListBox.ValueMember = "Display";
+
+            vendersBinding.DataSource = store.Venders;
+            VenderListBox.DataSource = vendersBinding;
+
+            VenderListBox.DisplayMember = "Display";
+            VenderListBox.ValueMember = "Display";
+
         }
 
         private void Consignment_Shop_Load(object sender, EventArgs e)
@@ -100,5 +117,39 @@ namespace Consignment_Shop_UI
 
         }
 
+        private void AddToCart_Click(object sender, EventArgs e)
+        {
+
+            //MessageBox.Show("I have been Clicked"); // to test the click event
+
+            Item selectedItem = (Item) ItemListBox.SelectedItem;
+
+            // MessageBox.Show(selectedItem.Title);
+
+            shoppingCartData.Add(selectedItem);
+
+            cartBinding.ResetBindings(false);
+        }
+
+        private void PurchaseButton_Click(object sender, EventArgs e)
+        {
+            // Mark each item as Sold
+            // Clear the cart
+            foreach (Item item in shoppingCartData) {
+                item.Sold = true;
+                item.Owner.PaymentDue += (decimal)item.Owner.Commission * item.Price;
+
+            }
+
+            shoppingCartData.Clear();
+
+            // when ever we change a list, we need to reset our binding
+            cartBinding.ResetBindings(false);
+
+            itemsBinding.DataSource = store.Items.Where(item => item.Sold == false).ToList();
+            itemsBinding.ResetBindings(false);
+            vendersBinding.ResetBindings(false);
+
+        }
     }
 }

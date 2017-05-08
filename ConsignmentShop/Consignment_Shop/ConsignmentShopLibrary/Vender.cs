@@ -14,10 +14,20 @@ namespace ConsignmentShopLibrary
 
         public double Commission { get; set; }
 
+        public decimal PaymentDue { get; set; }
+
         public Vender()
         {
             Commission = .5;
 
+        }
+
+        public string Display
+        {
+            get
+            {
+                return string.Format("{0} {1} - ${2}", FirstName, LastName, PaymentDue);
+            }
         }
     }
 }
