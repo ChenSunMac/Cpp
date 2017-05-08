@@ -1,0 +1,9 @@
+C:\Users\Sun\Documents\GitHub\Cpp\ConsignmentShop\Consignment_Shop\Consignment_Shop_UI\bin\Debug\Consignment_Shop_UI.exe.config
+C:\Users\Sun\Documents\GitHub\Cpp\ConsignmentShop\Consignment_Shop\Consignment_Shop_UI\bin\Debug\Consignment_Shop_UI.exe
+C:\Users\Sun\Documents\GitHub\Cpp\ConsignmentShop\Consignment_Shop\Consignment_Shop_UI\bin\Debug\Consignment_Shop_UI.pdb
+C:\Users\Sun\Documents\GitHub\Cpp\ConsignmentShop\Consignment_Shop\Consignment_Shop_UI\obj\Debug\Consignment_Shop_UI.csprojResolveAssemblyReference.cache
+C:\Users\Sun\Documents\GitHub\Cpp\ConsignmentShop\Consignment_Shop\Consignment_Shop_UI\obj\Debug\Consignment_Shop_UI.Consignment_Shop.resources
+C:\Users\Sun\Documents\GitHub\Cpp\ConsignmentShop\Consignment_Shop\Consignment_Shop_UI\obj\Debug\Consignment_Shop_UI.Properties.Resources.resources
+C:\Users\Sun\Documents\GitHub\Cpp\ConsignmentShop\Consignment_Shop\Consignment_Shop_UI\obj\Debug\Consignment_Shop_UI.csproj.GenerateResource.Cache
+C:\Users\Sun\Documents\GitHub\Cpp\ConsignmentShop\Consignment_Shop\Consignment_Shop_UI\obj\Debug\Consignment_Shop_UI.exe
+C:\Users\Sun\Documents\GitHub\Cpp\ConsignmentShop\Consignment_Shop\Consignment_Shop_UI\obj\Debug\Consignment_Shop_UI.pdb
