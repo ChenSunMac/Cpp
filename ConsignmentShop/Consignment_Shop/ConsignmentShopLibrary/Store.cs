@@ -14,5 +14,13 @@ namespace ConsignmentShopLibrary
         public List<Vender> Venders { get; set; }
 
         public List<Item> Items { get; set; }
+
+        public Store()
+        {
+            Venders = new List<Vender>();
+            Items = new List<Item>();
+        }
+
+
     }
 }

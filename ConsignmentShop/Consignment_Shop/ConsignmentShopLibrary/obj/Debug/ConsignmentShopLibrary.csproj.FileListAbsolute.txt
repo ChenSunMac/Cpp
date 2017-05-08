@@ -1,0 +1,5 @@
+C:\Users\Sun\Documents\GitHub\Cpp\ConsignmentShop\Consignment_Shop\ConsignmentShopLibrary\bin\Debug\ConsignmentShopLibrary.dll
+C:\Users\Sun\Documents\GitHub\Cpp\ConsignmentShop\Consignment_Shop\ConsignmentShopLibrary\bin\Debug\ConsignmentShopLibrary.pdb
+C:\Users\Sun\Documents\GitHub\Cpp\ConsignmentShop\Consignment_Shop\ConsignmentShopLibrary\obj\Debug\ConsignmentShopLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Sun\Documents\GitHub\Cpp\ConsignmentShop\Consignment_Shop\ConsignmentShopLibrary\obj\Debug\ConsignmentShopLibrary.dll
+C:\Users\Sun\Documents\GitHub\Cpp\ConsignmentShop\Consignment_Shop\ConsignmentShopLibrary\obj\Debug\ConsignmentShopLibrary.pdb
