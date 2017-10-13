@@ -13,7 +13,12 @@
  * s = show_freelist, p = print_fs
  * The remaining fields (if any) are the arguments of the operation in order
  */
-
+/*
+ * input : address of pointer to char, args = char[][]
+ *         pointer to char, line = char[]
+ * return : void
+ * segment line based on space and store the command in args[][]
+ */
 static void split(char **args, char *line) {
     char *ptr = line;
     args[0] = line;
@@ -26,26 +31,34 @@ static void split(char **args, char *line) {
     }
 }
 
+/*
+ * input : pointer to char, transfile[] should be filename
+ * return : void
+ * segment line based on space and store the command in args[][]
+ */
 void process_transactions(char *transfile) {
     char line[MAXLINE];
+    // fs points to File System
     FS *fs = NULL;
 
     FILE *tf = fopen(transfile, "r");
+
     if (tf == NULL ) {
-        perror("fopen");
-        exit(1);
+        perror("fopen");// Error: : No such file or directory
+        exit(1); // indicates unsucessful termination
     }
 
     // first transaction must be init or open
-
+    // read line from file
     if((fgets(line, MAXLINE, tf)) != NULL) {
         char *args[5];
         // First remove newline character
         line[strlen(line) - 1] = '\0';
+        // using split to segment line and store the char array in args
         split(args, line);
 
         if(line[0] == 'i') {
-            fs = init_fs(args[1]);
+            fs = init_fs(args[1]); 
         } else if(line[0] == 'o') {
             fs = open_fs(args[1]);
         } else {

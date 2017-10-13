@@ -26,6 +26,7 @@ typedef struct block {
      (Our solution had no additional fields)*/
 } Freeblock;
 
+// File Structure
 typedef struct fs {
     Inode metadata[MAXFILES];   // A place to store the meta data so we don't
                                 // need to keep reading it.

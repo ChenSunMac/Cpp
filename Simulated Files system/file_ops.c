@@ -59,6 +59,9 @@ static int find_inode(Inode *metadata, char *filename) {
 
 /* Initialize the simulated file system by writing the metadata to the file 
  * indicating that the file system is empty.
+ * Input : a pointer to char array, filename[]
+ * Return : a pointer to File System Structure
+ * 
  */
 FS *init_fs(char *filename) {
     int i;
@@ -72,6 +75,8 @@ FS *init_fs(char *filename) {
 
     // open the file that will hold the file system data
     fs->fp = fopen(filename, "w+");
+    //"w+" Create an empty file for both reading and writing. 
+    //If a file with the same name already exists its content is erased and the file is treated as a new empty file. 
     if (fs->fp == NULL) {
         perror("init_fs:");
         exit(1);
@@ -86,7 +91,8 @@ FS *init_fs(char *filename) {
     write_metadata(fs);
 
     // Fill up the data area with . so that the real file has the correct size
-    memset(buf, '.', MAX_FS_SIZE);  
+    memset(buf, '.', MAX_FS_SIZE);  // 1024 of '.' 
+    // size_t fwrite ( const void * ptr, size_t size, size_t count, FILE * stream ); 
     if (fwrite(buf, MAX_FS_SIZE, 1, fs->fp) < 1) {
         perror("init_fs:");
         exit(1);
