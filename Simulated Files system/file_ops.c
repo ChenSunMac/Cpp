@@ -99,6 +99,8 @@ FS *init_fs(char *filename) {
     }
 
     fs->freelist = NULL;
+    // METADATA_ENDS = (int)(sizeof(Inode) * MAXFILES);
+    // MAX_FS_SIZE = 1024
     add_free_block(fs, METADATA_ENDS, MAX_FS_SIZE);
 
     return fs;
@@ -139,7 +141,7 @@ void close_fs(FS *fs) {
      * to do this
      */
 
-
+    //free(fs)
 }
 
 /* Print the contents of the simulated file system to stdout.
@@ -157,13 +159,15 @@ void print_fs(FS *fs) {
                 fs->metadata[i].offset, fs->metadata[i].length);
     }
     printf("\n");
-
+        //if fseek error occurs it returns -1 (set by ferror) 
         if (fseek(fs->fp, METADATA_ENDS, SEEK_SET) == -1) {
         perror("print_fs:");
         exit(1);
     }
 
-
+    // fread: Reads an array of count elements, 
+    // each one with a size of size bytes, 
+    // from the stream and stores them in the block of memory specified by ptr.
     while((numread = fread(buf, 1, READSIZE, fs->fp)) > 0) {
         printf("[%d] ", linecount);
         fwrite(buf, numread, 1, stdout);
@@ -193,9 +197,20 @@ void create_file(FS *fs, char *filename, int size, char *buf) {
 
     /* TODO: Complete this function to
         - find an approrpriate free block which sets the offset
+        while (fs->freelist!=NULL){
+            compare size and freeblock length
+            if size < freeblock length 
+                found the appropriate block
+            else
+                ->next
+        }
         - writes the simulated data to the real file at the offset
         (tip: use fwrite)
+        size_t fwrite ( const void * ptr, size_t size, size_t count, FILE * stream );
+        fwrite Write block of data to stream
+        fwrite (buf, size, 1, fs->fp + shift );
         - updates the offset in the metadata
+
      */
 
     
@@ -214,6 +229,8 @@ void delete_file(FS *fs, char *filename) {
     }
 
     /* TODO: Give back the free space to the freelist */
+    // add free block at i-th element in the linked list
+    add_free_block(fs, fs->metadata[index].offset, fs->metadata[index].length);
 
 
     // Update the metadata

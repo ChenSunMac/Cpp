@@ -8,6 +8,10 @@
  */
 
 int get_free_block(FS *fs, int size) {
+	// define a NUM = 4 or 2 or ...
+	// look through the list
+	// find the first block with [(length - offset) - size] < NUM
+	// if such block exists, use it
         return -1;
 }
 
